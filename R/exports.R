@@ -29,3 +29,5 @@ save_dadata_tokens <- function(api_token = NULL,
   Sys.setenv("RDADATA" = env_name)
 
 }
+
+usethis::use_git()
