@@ -12,9 +12,11 @@ Description: Allows to interact with the 'DADATA REST API' to analyze the retrie
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: 
+    dplyr,
     httr,
     magrittr,
-    tidyjson,
-    tibble,
-    dplyr
+    tidyjson
 RoxygenNote: 7.1.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
