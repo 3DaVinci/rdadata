@@ -1,4 +1,15 @@
-
+#' @title Retrieves the previously saved API tokens
+#' @description Retrieves a \code{data.frame} with the available tokens
+#' previously saved into the environment under the RDADATA variable
+#' through the \code{save_dadata_tokens()} function.
+#' @return Returns a \code{data.frame} with the saved API tokens
+#' @examples
+#' \dontrun{
+#' save_dadata_tokens(api_token='__INSERT_YOUR_API_TOKEN_HERE__',
+#'                    secret_token='__INSERT_YOUR_SECRET_TOKEN_HERE__')
+#' get_dadata_tokens()
+#' }
+#' @export
 
 get_dadata_tokens <- function(){
   info <- Sys.getenv("RDADATA",NA)
@@ -13,7 +24,25 @@ get_dadata_tokens <- function(){
 }
 
 
-
+#' @title Saves credentials tokens in the environment
+#' @description Saves credentials tokens
+#' the users' environment. It has the advantage that it is not necessary
+#' to explicitly publish the credentials in the users code. Just do it one
+#' time and you are set. To update any of the parameters just save again and
+#' it will overwrite the older credential.
+#' @param api_token Token required for REST API authorization.
+#' You can get the token on your personal profile page,
+#' after logging in at \href{https://dadata.ru/profile/#info}{https://dadata.ru/profile/#info}.
+#' It will be saved in the environment as API_TOKEN.
+#' @param secret_token Token required for paid plans.
+#' It will be saved in the environment as SECRET_TOKEN.
+#' @return Saves the tokens in the users environment - it does not return any object.
+#' @examples
+#' \dontrun{
+#' save_dadata_tokens(api_token='__INSERT_YOUR_API_TOKEN_HERE__',
+#'                    secret_token='__INSERT_YOUR_SECRET_TOKEN_HERE__')
+#' }
+#' @export
 
 save_dadata_tokens <- function(api_token = NULL,
                                secret_token = NULL){
@@ -28,90 +57,4 @@ save_dadata_tokens <- function(api_token = NULL,
 
   Sys.setenv("RDADATA" = env_name)
 
-}
-
-get_organisation <- function(query,
-                             kpp = NULL,
-                             branch_type = NULL,
-                             type = NULL,
-                             count = 300, tidy = TRUE, ...){
-
-  query <- as.character(query)
-  api_token <- get_dadata_tokens()[,"API_TOKEN"]
-
-  if(is.null(api_token)){
-    stop(call. = FALSE, "Please set api_token in save_dadata_tokens()")
-  }
-
-
-  # Check inputs
-
-  if(!is.null(branch_type)){
-    if(!branch_type %in% c("MAIN", "BRANCH")){
-      stop(call. = FALSE, "branch_type should be MAIN or BRANCH")
-    }
-  }
-
-  if(!is.null(type)){
-    if(!type %in% c("LEGAL", "INDIVIDUAL")){
-      stop(call. = FALSE, "branch_type should be LEGAL or INDIVIDUAL")
-    }
-  }
-
-  if(grepl("[A-z]|[А-я]", query)){
-    stop(call. = FALSE, "query should be INN or OGRN number")
-  }
-
-  if(!is.numeric(count)){
-    stop(call. = FALSE, "count should be numeric")
-  }
-
-  if(count > 300){
-    stop(call. = FALSE, "maximum inrow count it's 300")
-  }
-
-  if(!is.logical(tidy)){
-    stop(call. = FALSE, "tidy should be TRUE or FALSE")
-  }
-
-  # Request to server
-  organisation_list <- list()
-  response <- try(httr::POST(
-    url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party",
-    httr::content_type_json(),
-    httr::accept_json(),
-    httr::user_agent("github.com/3davinci"),
-    httr::add_headers(Authorization = paste0("Token ", api_token)),
-    body = list(query = query,
-                count = count,
-                kpp = kpp,
-                branch_type = branch_type,
-                type = type),
-    encode = "json"),
-    silent = TRUE)
-
-  if(class(response)  == "try-error"){
-    stop(call. = FALSE, "Can't request server. Check your internet connection")
-  }
-
-  raw_content <-  httr::content(response)
-
-  if(tidy){
-    tmp_table <- tibble::tibble()
-    for (i in seq(length(raw_content$suggestions))) {
-      tmp_table <- tmp_table %>%
-        dplyr::bind_rows(tidyjson::spread_all(raw_content$suggestions[i]))
-    }
-
-    # convert all dates from numeric do date time
-    tmp_table[names(tmp_table) %>% stringr::str_detect("date")]  <- tmp_table[names(tmp_table) %>% stringr::str_detect("date")] %>% dplyr::mutate_all(~as.Date(as.POSIXct(./1000, origin = "1970-01-01")))
-
-    output_table <- tmp_table %>%
-      dplyr::select(-document.id, -..JSON)
-
-  } else {
-    output_table <- raw_content$suggestions
-  }
-
-  return(output_table)
 }
