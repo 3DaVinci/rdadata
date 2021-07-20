@@ -29,11 +29,11 @@ The focus of this package lies in the following workflow aspects:
 
 Hence, for easy transformation and manipulation, main functions, related
 with getting DaData returns a `tibble` with **tidy data**, following
-main rules where each row is a single observation of an **issue** or a
-**project**, each column is a variable and each value must have its own
-cell. Thus, it integrates well with `dplyr` and tidy paradigm. This also
-allows for an easy integration with tabular data, but if it necessary,
-you may manipulate with raw JSON, saved as nested list.
+main rules where each row is a single observation, each column is a
+variable and each value must have its own cell. Thus, it integrates well
+with `dplyr` and tidy paradigm. This also allows for an easy integration
+with tabular data, but if it necessary, you may manipulate with raw
+JSON, saved as nested list.
 
 ## Installation
 
