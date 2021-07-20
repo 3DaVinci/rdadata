@@ -7,9 +7,9 @@
 supported_find_by_id()
 }
 \value{
-Returns a character vector of all the supported API names.
+Returns a character vector of all supported API names.
 }
 \description{
-Function shows all the supported API names that are
+Function shows all supported API names that are
 available to choose for the \code{find_by_id()} function.
 }
