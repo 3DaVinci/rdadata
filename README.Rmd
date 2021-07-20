@@ -42,7 +42,7 @@ You can install the latest release of this package from [Github](https://github.
 
 ```{r, eval=FALSE} 
 if (!require("devtools")) install.packages("devtools")
-devtools::install_github("3davinci/3davinci")
+devtools::install_github("3davinci/rdadata")
 ```
 
 ## Example

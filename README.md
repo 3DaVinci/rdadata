@@ -43,7 +43,7 @@ commands in `R`:
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
-devtools::install_github("3davinci/3davinci")
+devtools::install_github("3davinci/rdadata")
 ```
 
 ## Example
