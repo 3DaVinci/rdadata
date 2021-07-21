@@ -18,10 +18,12 @@ personal_info(method)
 Calls available methods to check your personal info on DADATA
 }
 \examples{
+\dontrun{
 # show your stats of used methods
 personal_info("stat")
 # show your current balance
 personal_info("balance")
 # show actual time of available resources
 personal_info("version")
+}
 }

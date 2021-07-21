@@ -30,13 +30,13 @@ All methods presented in this section are for a fee. Learn more about costs on \
 \dontrun{
 save_dadata_tokens(api_token = '__INSERT_YOUR_API_TOKEN_HERE__',
                    secret_token = '__INSERT_YOUR_SECRET_TOKEN_HERE__')
-}
 # Validate and cleanse address
-clean(method = "address", "мск сухонска 11/-89")
+clean(method = "address", "msk suhonska 11/-89")
 # Validate and cleanse name
-clean(method = "name", query = "Срегей владимерович иванов")
+clean(method = "name", query = "sergei vladimirovich ivan")
 # Validate and cleanse phone
-clean(method = "phone", "раб 846)231.60.14 *139")
+clean(method = "phone", "rab 846)231.60.14 *139")
+}
 }
 \seealso{
 For more information about DADATA API visit the following link:

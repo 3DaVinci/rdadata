@@ -25,7 +25,6 @@ methods related with «suggestion» you can see in \code{supported_find_by_id()}
 \dontrun{
 save_dadata_tokens(api_token = '__INSERT_YOUR_API_TOKEN_HERE__',
                    secret_token = '__INSERT_YOUR_SECRET_TOKEN_HERE__')
-}
 #Find address by FIAS ID
 find_by_id(method = "address", query = "9120b43f-2fae-4838-a144-85e43c2bfb29")
 
@@ -34,6 +33,7 @@ find_by_id(method = "party", query = "7707083893", kpp = "540602001")
 
 #Tax office
 find_by_id(method = "fns_unit", query = "5257")
+}
 }
 \seealso{
 For more information about DADATA API visit the following link:

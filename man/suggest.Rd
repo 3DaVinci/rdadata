@@ -25,15 +25,15 @@ methods related with «suggestion» you can see in \code{supported_suggestion()}
 \dontrun{
 save_dadata_tokens(api_token='__INSERT_YOUR_API_TOKEN_HERE__',
                    secret_token='__INSERT_YOUR_SECRET_TOKEN_HERE__')
-}
 #Suggest country
-suggest(method = "country", query = "та")
+suggest(method = "country", query = "ef")
 
-#Suggest company with spicified parametrs
-suggest(method = "party", query = "сбер", branch_type = "MAIN", count = 20)
+#Suggest company with specified parameters
+suggest(method = "party", query = "sber", branch_type = "MAIN", count = 20)
 
 #Suggest bank
-suggest(method = "bank", query = "ти")
+suggest(method = "bank", query = "ti")
+}
 }
 \seealso{
 For more information about DADATA API visit the following link:

@@ -87,15 +87,16 @@ supported_cleans <- function(){
 #' \dontrun{
 #' save_dadata_tokens(api_token='__INSERT_YOUR_API_TOKEN_HERE__',
 #'                    secret_token='__INSERT_YOUR_SECRET_TOKEN_HERE__')
-#' }
 #' #Suggest country
-#' suggest(method = "country", query = "та")
+#' suggest(method = "country", query = "ef")
 #'
-#' #Suggest company with spicified parametrs
-#' suggest(method = "party", query = "сбер", branch_type = "MAIN", count = 20)
+#' #Suggest company with specified parameters
+#' suggest(method = "party", query = "sber", branch_type = "MAIN", count = 20)
 #'
 #' #Suggest bank
-#' suggest(method = "bank", query = "ти")
+#' suggest(method = "bank", query = "ti")
+#' }
+
 #' @export
 
 suggest <- function(method,
@@ -185,7 +186,6 @@ suggest <- function(method,
 #' \dontrun{
 #' save_dadata_tokens(api_token = '__INSERT_YOUR_API_TOKEN_HERE__',
 #'                    secret_token = '__INSERT_YOUR_SECRET_TOKEN_HERE__')
-#' }
 #' #Find address by FIAS ID
 #' find_by_id(method = "address", query = "9120b43f-2fae-4838-a144-85e43c2bfb29")
 #'
@@ -194,6 +194,7 @@ suggest <- function(method,
 #'
 #' #Tax office
 #' find_by_id(method = "fns_unit", query = "5257")
+#' }
 #' @export
 find_by_id <- function(method,
                     query = NULL,
@@ -285,13 +286,13 @@ find_by_id <- function(method,
 #' \dontrun{
 #' save_dadata_tokens(api_token = '__INSERT_YOUR_API_TOKEN_HERE__',
 #'                    secret_token = '__INSERT_YOUR_SECRET_TOKEN_HERE__')
-#' }
 #' # Validate and cleanse address
-#' clean(method = "address", "мск сухонска 11/-89")
+#' clean(method = "address", "msk suhonska 11/-89")
 #' # Validate and cleanse name
-#' clean(method = "name", query = "Срегей владимерович иванов")
+#' clean(method = "name", query = "sergei vladimirovich ivan")
 #' # Validate and cleanse phone
-#' clean(method = "phone", "раб 846)231.60.14 *139")
+#' clean(method = "phone", "rab 846)231.60.14 *139")
+#' }
 #' @export
 clean <- function(method,
                   query,
@@ -375,12 +376,14 @@ clean <- function(method,
 #' \item version
 #' }
 #' @examples
+#' \dontrun{
 #' # show your stats of used methods
 #' personal_info("stat")
 #' # show your current balance
 #' personal_info("balance")
 #' # show actual time of available resources
 #' personal_info("version")
+#' }
 #' @export
 personal_info <- function(method) {
 
@@ -442,11 +445,11 @@ personal_info <- function(method) {
 #' \dontrun{
 #' save_dadata_tokens(api_token = '__INSERT_YOUR_API_TOKEN_HERE__',
 #'                    secret_token = '__INSERT_YOUR_SECRET_TOKEN_HERE__')
-#' }
 #' # Identifies the city by its IP address in Russia. Uses the client's IP address
 #' locate(method = "ip", ip = "46.226.227.20")
 #' # request with a radius limit of 50 m
 #' locate(method = "geo", lat = 55.601983, lon = 37.359486, radius_meters = 50)
+#' }
 #' @export
 locate <- function(method, tidy = TRUE, ...) {
 

@@ -22,11 +22,11 @@ Calls DADATA's REST API, with one of the available methods.
 \dontrun{
 save_dadata_tokens(api_token = '__INSERT_YOUR_API_TOKEN_HERE__',
                    secret_token = '__INSERT_YOUR_SECRET_TOKEN_HERE__')
-}
 # Identifies the city by its IP address in Russia. Uses the client's IP address
 locate(method = "ip", ip = "46.226.227.20")
 # request with a radius limit of 50 m
 locate(method = "geo", lat = 55.601983, lon = 37.359486, radius_meters = 50)
+}
 }
 \seealso{
 For more information about DADATA API visit the following link:
