@@ -408,7 +408,7 @@ personal_info <- function(method) {
     url <- "https://dadata.ru/api/v2/profile/balance"
   }
 
-  response <- try(GET(
+  response <- try(httr::GET(
     url = url,
     httr::user_agent("github.com/3davinci/rdadata"),
     httr::add_headers(Authorization = paste0("Token ", api_token),
