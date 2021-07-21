@@ -37,8 +37,40 @@ test_that("supported_cleans(): Field vector equal & and is.vector",{
 })
 
 # suggest() ----
-test_that("suggest(): ",{
+test_that("suggest(): Without tokens, will be error & some incorrect methods, query",{
   expect_error(suggest("test"))
   expect_error(suggest(method = "bank", query = "ти"))
+  expect_error(suggest(method = "test", query = "ти"))
+  expect_error(suggest(method = "bank", query = "ти", tidy = "test"))
 })
 
+# find_by_id() ----
+test_that("find_by_id(): Without tokens, will be error & some incorrect methods, query",{
+  expect_error(find_by_id("test"))
+  expect_error(find_by_id(method = "bank", query = "ти"))
+  expect_error(find_by_id(method = "test", query = "ти"))
+  expect_error(find_by_id(method = "bank", query = "ти", tidy = "test"))
+})
+
+# locate() ----
+test_that("locate(): Without tokens, will be error & some incorrect methods, query",{
+  expect_error(locate("test"))
+  expect_error(locate(method = "ip", query = "foo"))
+  expect_error(locate(method = "test", query = "ти"))
+  expect_error(locate(method = "ip", query = "ти", tidy = "test"))
+})
+
+# clean() ----
+test_that("clean(): Without tokens, will be error & some incorrect methods, query",{
+  expect_error(clean("test"))
+  expect_error(clean(method = "name", query = "foo"))
+  expect_error(clean(method = "test", query = "ти"))
+  expect_error(clean(method = "name", query = "ти", tidy = "test"))
+})
+
+# personal_info() ----
+test_that("personal_info(): Without tokens, will be error & some incorrect methods, query",{
+  expect_error(personal_info("test"))
+  expect_error(personal_info("balance"))
+  expect_error(personal_info(method = "balance", query = "test"))
+})
