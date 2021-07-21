@@ -102,13 +102,13 @@ suggest <- function(method,
                     query = NULL,
                     tidy = TRUE, ...) {
 
-  if(!method %in% supported_suggestions()){
+  if (!method %in% supported_suggestions()) {
     stop(call. = FALSE, "Incorrect API method. Check valid supported_suggestions")
   }
 
   query <- as.character(query)
 
-  if(method == "find_affiliated"){
+  if (method == "find_affiliated") {
     api_url <- "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findAffiliated/party"
   } else {
     api_url <- paste0("https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/", method)
@@ -116,11 +116,11 @@ suggest <- function(method,
 
   api_token <- get_dadata_tokens()[,"API_TOKEN"]
 
-  if(is.null(api_token)){
+  if (is.null(api_token)) {
     stop(call. = FALSE, "Please set api_token in save_dadata_tokens()")
   }
 
-  if(!is.logical(tidy)){
+  if (!is.logical(tidy)) {
     stop(call. = FALSE, "tidy should be TRUE or FALSE")
   }
 
