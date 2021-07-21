@@ -56,10 +56,12 @@ devtools::install_github("3davinci/rdadata")
 Go to your profile on DaData and copy API token and secret token. Then
 set it with `save_dadata_tokens()`
 
-    library(rdadata)
-    # Save tokens to pass them only one time
-    save_dadata_tokens(api_token = "Replace with Dadata API key",
-                       secret_token = "Replace with Dadata secret key")
+``` r
+library(rdadata)
+# Save tokens to pass them only one time
+save_dadata_tokens(api_token = "Replace with Dadata API key",
+                   secret_token = "Replace with Dadata secret key")
+```
 
 ## Postal Address
 
