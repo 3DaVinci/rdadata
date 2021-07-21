@@ -24,8 +24,13 @@ Wickham</i></a>
 
 The focus of this package lies in the following workflow aspects:
 
--   **Import**
--   **Tidy**
+-   **Import** — the
+    [httr](https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html)
+    package will help us with this
+-   **Tidy** — [dplyr](https://dplyr.tidyverse.org/),
+    [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
+    and
+    [tidyjson](https://cran.r-project.org/web/packages/tidyjson/vignettes/introduction-to-tidyjson.html)
 
 Hence, for easy transformation and manipulation, main functions, related
 with getting DaData returns a `tibble` with **tidy data**, following
@@ -46,15 +51,29 @@ if (!require("devtools")) install.packages("devtools")
 devtools::install_github("3davinci/rdadata")
 ```
 
-## Example
+## Usage
 
-This is a basic example which shows you how to solve a common problem:
+Go to your profile on DaData and copy API token and secret token. Then
+set it with `save_dadata_tokens()`
+
+    library(rdadata)
+    # Save tokens to pass them only one time
+    save_dadata_tokens(api_token = "Replace with Dadata API key",
+                       secret_token = "Replace with Dadata secret key")
+
+## Postal Address
+
+### [Validate and cleanse address](https://dadata.ru/api/clean/address/)
 
 ``` r
-library(rdadata)
-## basic example code
+call <- clean(method = "address", query = "мск сухонская 11 89")
+str(call)
+tibble [1 × 82] (S3: tbl_df/tbl/data.frame)
+ $ source                 : chr "мск сухонская 11 89"
+ $ result                 : chr "г Москва, ул Сухонская, д 11, кв 89"
+ $ postal_code            : chr "127642"
+ $ country                : chr "Россия"
+ $ country_iso_code       : chr "RU"
+ $ federal_district       : chr "Центральный"
+ ...
 ```
-
-# TO DO
-
-Описать примеры использования, как можно больше сложных примеров.

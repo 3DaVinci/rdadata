@@ -28,15 +28,12 @@ In this way, users benefit from the best features of both platforms. More specif
 
 The focus of this package lies in the following workflow aspects:
 
-- __Import__
-- __Tidy__
+- __Import__ --- the [httr](https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html) package will help us with this
+- __Tidy__  --- [dplyr](https://dplyr.tidyverse.org/), [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) and [tidyjson](https://cran.r-project.org/web/packages/tidyjson/vignettes/introduction-to-tidyjson.html)
 
 Hence, for easy transformation and manipulation, main functions, related with getting DaData returns a `tibble` with **tidy data**, following main rules where each row is a single observation, each column is a variable and each value must have its own cell. Thus, it integrates well with `dplyr` and tidy paradigm. This also allows for an easy integration with tabular data, but if it necessary, you may manipulate with raw JSON, saved as nested list.
 
-
-
 ## Installation
-
 
 You can install the latest release of this package from [Github](https://github.com/3davinci/rdadata) with the following commands in `R`:
 
@@ -45,14 +42,33 @@ if (!require("devtools")) install.packages("devtools")
 devtools::install_github("3davinci/rdadata")
 ```
 
-## Example
+## Usage
 
-This is a basic example which shows you how to solve a common problem:
+Go to your profile on DaData and copy API token and secret token. Then set it with `save_dadata_tokens()`
 
-```{r example}
+```
 library(rdadata)
-## basic example code
+# Save tokens to pass them only one time
+save_dadata_tokens(api_token = "Replace with Dadata API key",
+                   secret_token = "Replace with Dadata secret key")
 ```
 
-# TO DO
-Описать примеры использования, как можно больше сложных примеров.
+
+## Postal Address
+
+### [Validate and cleanse address](https://dadata.ru/api/clean/address/)
+
+```r
+call <- clean(method = "address", query = "мск сухонская 11 89")
+str(call)
+tibble [1 × 82] (S3: tbl_df/tbl/data.frame)
+ $ source                 : chr "мск сухонская 11 89"
+ $ result                 : chr "г Москва, ул Сухонская, д 11, кв 89"
+ $ postal_code            : chr "127642"
+ $ country                : chr "Россия"
+ $ country_iso_code       : chr "RU"
+ $ federal_district       : chr "Центральный"
+ ...
+```
+
+
