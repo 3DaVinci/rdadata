@@ -2,11 +2,15 @@ Package: rdadata
 Type: Package
 Title: 'DADATA REST API' Wrapper for R
 Version: 0.1.0
-Authors@R: 
+Authors@R: c(
     person(given = "Stanislav",
            family = "Masiuta",
            role = c("aut", "cre"),
-           email = "stas@3davinci.ru")
+           email = "stas@3davinci.ru"),
+    person(given = "Artem", 
+           family = "Starchenko", 
+           email = "dir@3davinci.ru", 
+           role = "cph"))
 Description: Allows to interact with the 'DADATA REST API' to analyze the retrieved data in R. 
     For further information about the API visit <https://dadata.ru/api/>.
 License: MIT + file LICENSE
