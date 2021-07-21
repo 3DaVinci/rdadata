@@ -228,7 +228,7 @@ tibble [1 × 88] (S3: tbl_df/tbl/data.frame)
 Find by KLADR ID:
 
 ``` r
-> call <- find_by_id(method = "address", query="77000000000268400")
+> call <- find_by_id(method = "address", query = "77000000000268400")
 > str(call)
 
 tibble [1 × 88] (S3: tbl_df/tbl/data.frame)
@@ -278,7 +278,7 @@ tibble [1 × 17] (S3: tbl_df/tbl/data.frame)
 ### [Get City ID for delivery services](https://dadata.ru/api/delivery/)
 
 ``` r
-> call <- find_by_id(method = "delivery", query="3100400100000")
+> call <- find_by_id(method = "delivery", query = "3100400100000")
 > str(call)
 
 tibble [1 × 7] (S3: tbl_df/tbl/data.frame)
@@ -313,7 +313,7 @@ tibble [1 × 66] (S3: tbl_df/tbl/data.frame)
 ### [Suggest country](https://dadata.ru/api/suggest/country/)
 
 ``` r
-> call <- suggest(method = "country", query="та")
+> call <- suggest(method = "country", query = "та")
 > str(call)
 
 tibble [4 × 7] (S3: tbl_df/tbl/data.frame)
@@ -332,7 +332,7 @@ tibble [4 × 7] (S3: tbl_df/tbl/data.frame)
 ### [Find company by INN](https://dadata.ru/api/find-party/)
 
 ``` r
-> call <- find_by_id(method = "party", query="7707083893", count = 300)
+> call <- find_by_id(method = "party", query = "7707083893", count = 300)
 > str(call)
 
 tibble [108 × 176] (S3: tbl_df/tbl/data.frame)
@@ -407,13 +407,13 @@ tibble [10 × 143] (S3: tbl_df/tbl/data.frame)
 Constrain by individual entrepreneurs:
 
 ``` r
-suggest(method = "party", query="сбер", type="INDIVIDUAL")
+suggest(method = "party", query = "сбер", type="INDIVIDUAL")
 ```
 
 Constrain by head companies, no branches:
 
 ``` r
-suggest(method = "party", query="сбер", branch_type="MAIN")
+suggest(method = "party", query = "сбер", branch_type="MAIN")
 ```
 
 ### [Find affiliated companies](https://dadata.ru/api/find-affiliated/)
@@ -447,7 +447,7 @@ tibble [3 × 48] (S3: tbl_df/tbl/data.frame)
 ### [Find bank by BIC, SWIFT or INN](https://dadata.ru/api/find-bank/)
 
 ``` r
-> call <- find_by_id(method="bank", query="044525225")
+> call <- find_by_id(method = "bank", query = "044525225")
 > str(call)
 
 tibble [1 × 137] (S3: tbl_df/tbl/data.frame)
@@ -543,7 +543,7 @@ tibble [10 × 8] (S3: tbl_df/tbl/data.frame)
 Suggest female first name:
 
 ``` r
-> call <- suggest(method = "fio", query="викт", parts="NAME", gender="FEMALE")
+> call <- suggest(method = "fio", query = "викт", parts = "NAME", gender = "FEMALE")
 > str(call)
 tibble [2 × 8] (S3: tbl_df/tbl/data.frame)
  $ value             : chr [1:2] "Виктория" "Викторина"
@@ -588,6 +588,7 @@ tibble [1 × 14] (S3: tbl_df/tbl/data.frame)
 ``` r
 > call <- clean(method = "passport", query = "4509 235857")
 > str(call)
+
 tibble [1 × 4] (S3: tbl_df/tbl/data.frame)
  $ source: chr "4509 235857"
  $ series: chr "45 09"
@@ -598,7 +599,9 @@ tibble [1 × 4] (S3: tbl_df/tbl/data.frame)
 ### [Suggest issued by](https://dadata.ru/api/suggest/fms_unit/)
 
 ``` r
+> call <- suggest(method = "fms_unit", query = "772 053")
 > str(call)
+
 tibble [8 × 6] (S3: tbl_df/tbl/data.frame)
  $ value             : chr [1:8] "ОВД ЗЮЗИНО Г. МОСКВЫ" "ОВД ЗЮЗИНО Г. МОСКВЫ ПАСПОРТНЫЙ СТОЛ 1" "ОВД ЗЮЗИНО ПС УВД ЮЗАО Г. МОСКВЫ" "ОВД ЗЮЗИНО ПС № 1 УВД ЮЗАО Г. МОСКВЫ" ...
  $ unrestricted_value: chr [1:8] "ОВД ЗЮЗИНО Г. МОСКВЫ" "ОВД ЗЮЗИНО Г. МОСКВЫ ПАСПОРТНЫЙ СТОЛ 1" "ОВД ЗЮЗИНО ПС УВД ЮЗАО Г. МОСКВЫ" "ОВД ЗЮЗИНО ПС № 1 УВД ЮЗАО Г. МОСКВЫ" ...
@@ -613,8 +616,9 @@ tibble [8 × 6] (S3: tbl_df/tbl/data.frame)
 ### [Validate email](https://dadata.ru/api/clean/email/)
 
 ``` r
-> call <- clean(method = "email", query="serega@yandex/ru")
+> call <- clean(method = "email", query = "serega@yandex/ru")
 > str(call)
+
 tibble [1 × 6] (S3: tbl_df/tbl/data.frame)
  $ source: chr "serega@yandex/ru"
  $ email : chr "serega@yandex.ru"
@@ -627,7 +631,7 @@ tibble [1 × 6] (S3: tbl_df/tbl/data.frame)
 ### [Suggest email](https://dadata.ru/api/suggest/email/)
 
 ``` r
-> call <- suggest(method="email", query="maria@")
+> call <- suggest(method = "email", query = "maria@")
 > str(call)
 
 tibble [10 × 7] (S3: tbl_df/tbl/data.frame)
@@ -664,6 +668,7 @@ tibble [1 × 21] (S3: tbl_df/tbl/data.frame)
 ``` r
 > call <- suggest(method = "region_court", query = "таганско")
 > str(call)
+
 tibble [5 × 5] (S3: tbl_df/tbl/data.frame)
  $ value             : chr [1:5] "Судебный участок № 371 Таганского судебного района г. Москвы" "Судебный участок № 372 Таганского судебного района г. Москвы" "Судебный участок № 373 Таганского судебного района г. Москвы" "Судебный участок № 374 Таганского судебного района г. Москвы" ...
  $ unrestricted_value: chr [1:5] "Судебный участок № 371 Таганского судебного района г. Москвы" "Судебный участок № 372 Таганского судебного района г. Москвы" "Судебный участок № 373 Таганского судебного района г. Москвы" "Судебный участок № 374 Таганского судебного района г. Москвы" ...
@@ -675,7 +680,9 @@ tibble [5 × 5] (S3: tbl_df/tbl/data.frame)
 ### [Metro station](https://dadata.ru/api/suggest/metro/)
 
 ``` r
+> call <- suggest(method = "metro", query = "алек")
 > str(call)
+
 tibble [4 × 12] (S3: tbl_df/tbl/data.frame)
  $ value             : chr [1:4] "Александровский сад" "Алексеевская" "Площадь Александра Невского 1" "Площадь Александра Невского 2"
  $ unrestricted_value: chr [1:4] "Александровский сад (Филёвская)" "Алексеевская (Калужско-Рижская)" "Площадь Александра Невского 1 (Невско-Василеостровская)" "Площадь Александра Невского 2 (Правобережная)"
@@ -694,7 +701,7 @@ tibble [4 × 12] (S3: tbl_df/tbl/data.frame)
 Constrain by city (Saint Petersburg):
 
 ``` r
-> call <- suggest(method="metro", query="алек", filters = list(city = "Санкт-Петербург"))
+> call <- suggest(method = "metro", query = "алек", filters = list(city = "Санкт-Петербург"))
 > str(call)
 
 tibble [2 × 12] (S3: tbl_df/tbl/data.frame)
@@ -715,7 +722,7 @@ tibble [2 × 12] (S3: tbl_df/tbl/data.frame)
 ### [Car brand](https://dadata.ru/api/suggest/car_brand/)
 
 ``` r
-> call <- suggest(method="car_brand", query="фо")
+> call <- suggest(method = "car_brand", query = "фо")
 > str(call)
 tibble [3 × 5] (S3: tbl_df/tbl/data.frame)
  $ value             : chr [1:3] "Volkswagen" "Ford" "Foton"
@@ -728,7 +735,7 @@ tibble [3 × 5] (S3: tbl_df/tbl/data.frame)
 ### [Currency](https://dadata.ru/api/suggest/currency/)
 
 ``` r
-> call <- suggest(method="currency", query="руб")
+> call <- suggest(method = "currency", query = "руб")
 > str(call)
 tibble [2 × 6] (S3: tbl_df/tbl/data.frame)
  $ value             : chr [1:2] "Белорусский рубль" "Российский рубль"
@@ -742,7 +749,7 @@ tibble [2 × 6] (S3: tbl_df/tbl/data.frame)
 ### [OKVED 2](https://dadata.ru/api/suggest/okved2/)
 
 ``` r
-> call <- suggest(method = "okved2", query="космических")
+> call <- suggest(method = "okved2", query = "космических")
 > str(call)
 
 tibble [7 × 6] (S3: tbl_df/tbl/data.frame)
@@ -757,7 +764,7 @@ tibble [7 × 6] (S3: tbl_df/tbl/data.frame)
 ### [OKPD 2](https://dadata.ru/api/suggest/okpd2/)
 
 ``` r
-> call <- suggest(method="okpd2", query="калоши", tidy = FALSE)
+> call <- suggest(method = "okpd2", query = "калоши", tidy = FALSE)
 > str(call)
 
 List of 1
